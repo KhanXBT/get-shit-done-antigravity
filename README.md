@@ -14,7 +14,7 @@
 <br>
 
 ```bash
-bash scripts/install.sh
+npx get-shit-done-antigravity
 ```
 
 **Works on Mac, Windows, and Linux.**
