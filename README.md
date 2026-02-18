@@ -17,7 +17,7 @@
 bash scripts/install.sh
 ```
 
-**Works on Mac and Linux.**
+**Works on Mac, Windows, and Linux.**
 
 <br>
 
@@ -48,11 +48,21 @@ bash scripts/install.sh
 ### Installation
 
 **Clone and install:**
+
+**Mac / Linux:**
 ```bash
 git clone https://github.com/KhanXBT/get-shit-done-antigravity.git
-cd GSD-Antigravity
+cd get-shit-done-antigravity
 bash scripts/install.sh           # Global install (all projects)
 bash scripts/install.sh --local   # Local install (current project only)
+```
+
+**Windows (PowerShell):**
+```powershell
+git clone https://github.com/KhanXBT/get-shit-done-antigravity.git
+cd get-shit-done-antigravity
+.\scripts\install.ps1              # Global install (all projects)
+.\scripts\install.ps1 -Local       # Local install (current project only)
 ```
 
 **Or copy manually:**
