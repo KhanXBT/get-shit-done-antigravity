@@ -1,0 +1,29 @@
+{
+  "name": "gsd-antigravity",
+  "version": "1.0.0",
+  "description": "A spec-driven development workflow system for Antigravity — ported from Get Shit Done",
+  "author": "KhanXBT",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KhanXBT/GSD-Antigravity.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KhanXBT/GSD-Antigravity/issues"
+  },
+  "homepage": "https://github.com/KhanXBT/GSD-Antigravity#readme",
+  "keywords": [
+    "gsd",
+    "antigravity",
+    "ai-coding",
+    "spec-driven",
+    "context-engineering",
+    "workflows",
+    "deepmind"
+  ],
+  "based_on": {
+    "name": "get-shit-done-cc",
+    "version": "1.20.4",
+    "url": "https://github.com/gsd-build/get-shit-done"
+  }
+}
