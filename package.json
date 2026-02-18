@@ -6,12 +6,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/KhanXBT/GSD-Antigravity.git"
+    "url": "https://github.com/KhanXBT/get-shit-done-antigravity.git"
   },
   "bugs": {
-    "url": "https://github.com/KhanXBT/GSD-Antigravity/issues"
+    "url": "https://github.com/KhanXBT/get-shit-done-antigravity/issues"
   },
-  "homepage": "https://github.com/KhanXBT/GSD-Antigravity#readme",
+  "homepage": "https://github.com/KhanXBT/get-shit-done-antigravity#readme",
   "keywords": [
     "gsd",
     "antigravity",

@@ -6,7 +6,7 @@
 
 **Solves context rot — the quality degradation that happens as AI fills its context window.**
 
-[![GitHub stars](https://img.shields.io/github/stars/KhanXBT/GSD-Antigravity?style=for-the-badge&logo=github&color=181717)](https://github.com/KhanXBT/GSD-Antigravity)
+[![GitHub stars](https://img.shields.io/github/stars/KhanXBT/get-shit-done-antigravity?style=for-the-badge&logo=github&color=181717)](https://github.com/KhanXBT/get-shit-done-antigravity)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
 [![Version](https://img.shields.io/badge/version-1.0.0-green?style=for-the-badge)](CHANGELOG.md)
 [![Original GSD](https://img.shields.io/badge/based_on-GSD_v1.20.4-CB3837?style=for-the-badge)](https://github.com/gsd-build/get-shit-done)
@@ -49,7 +49,7 @@ bash scripts/install.sh
 
 **Clone and install:**
 ```bash
-git clone https://github.com/KhanXBT/GSD-Antigravity.git
+git clone https://github.com/KhanXBT/get-shit-done-antigravity.git
 cd GSD-Antigravity
 bash scripts/install.sh           # Global install (all projects)
 bash scripts/install.sh --local   # Local install (current project only)
