@@ -318,6 +318,8 @@ function showHeader(title) {
     console.log(colors.blue('    ╚██████╔╝') + colors.cyan('███████║') + colors.cyan('██████╔╝'));
     console.log(colors.green('     ╚═════╝ ') + colors.blue('╚══════╝') + colors.cyan('╚═════╝ '));
     console.log(colors.dim('    Built by Arshad Khan'));
+    console.log(colors.green('    A spec-driven development workflow system for Antigravity — featuring a fully'));
+    console.log(colors.green('    autonomous ⚡ Super Mode, anti-hallucination, and model resilience protocols.'));
     console.log('');
     const line = '━'.repeat(53);
     console.log(` ${line}`);
