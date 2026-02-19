@@ -98,7 +98,5 @@ if [ -d "$REFERENCES_SRC" ] && [ "$(ls -A "$REFERENCES_SRC")" ]; then
 fi
 
 echo ""
-echo -e "  ${GREEN}✓ Installation complete!${NC}"
-echo ""
-echo "  Start with: /gsd-help"
+echo -e "  ${GREEN}Done!${NC} Run ${CYAN}/gsd-help${NC} to get started."
 echo ""

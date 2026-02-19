@@ -135,9 +135,7 @@ function install(targetDir) {
     fs.writeFileSync(versionFile, getVersion() + '\n');
 
     console.log('');
-    console.log(`  ${green('✓')} Installation complete! ${dim(`(${totalFiles} files)`)}`);
-    console.log('');
-    console.log(`  ${bold('Start with:')} /gsd-help`);
+    console.log('  ' + green('Done!') + ' Run ' + cyan('/gsd-help') + ' to get started.');
     console.log('');
 }
 

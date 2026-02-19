@@ -1,6 +1,6 @@
 {
   "name": "get-shit-done-antigravity",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A spec-driven development workflow system for Antigravity — ported from Get Shit Done",
   "main": "bin/gsd-tools.js",
   "bin": {
