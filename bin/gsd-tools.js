@@ -341,7 +341,7 @@ function showComplete(title, details = []) {
 // ─── CLI ────────────────────────────────────────
 
 function showHelp() {
-    console.log('');
+    showHeader('COMMAND REFERENCE');
     console.log(colors.bold('  GSD Tools — State management utilities'));
     console.log('');
     console.log('  Commands:');

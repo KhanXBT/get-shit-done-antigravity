@@ -5,7 +5,8 @@
   "main": "bin/gsd-tools.js",
   "bin": {
     "get-shit-done-antigravity": "bin/install.js",
-    "gsd-tools": "bin/gsd-tools.js"
+    "gsd-tools": "bin/gsd-tools.js",
+    "gsd": "bin/gsd-tools.js"
   },
   "scripts": {
     "install-global": "node bin/install.js --global",
