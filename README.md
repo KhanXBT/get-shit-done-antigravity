@@ -66,15 +66,7 @@ npx get-shit-done-antigravity
 
 ---
 
-## [1.0.8] - 2025-02-19
-### Added
-- **Post-Install Guidance** — Replicated the original GSD "Done! Run /gsd-help to get started" experience in all installers.
 
-## [1.0.7] - 2025-02-19
-### Fixed
-- **README Rendering** — Moved showcase image to `assets/` with relative paths for GitHub/npm compatibility.
-
-## [1.0.6] - 2025-02-19
 
 ## 🆕 What's New — Ported vs Invented
 
