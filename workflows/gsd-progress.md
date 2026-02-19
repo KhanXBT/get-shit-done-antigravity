@@ -43,6 +43,7 @@ Stop here.
 **Actually read** these files (do NOT work from memory):
 - `.planning/STATE.md` — current position, decisions, blockers
 - `.planning/ROADMAP.md` — phases and progress
+- `.planning/memory/PROJECT-MEMORY.md` — long-term architectural context (if it exists)
 
 If STATE.md doesn't exist, report "Project exists but STATE.md is missing. Run /gsd-new-project to reinitialize."
 
