@@ -328,6 +328,25 @@ Unlike the original GSD (Claude-only), GSD for Antigravity works across **all AI
 
 ---
 
+## 🔄 Model Resilience — Consistent Quality Across Switches
+
+When Claude's quota exceeds and Antigravity switches to Gemini or GPT, code quality can drop. GSD prevents this with **plan-driven quality** — the plan itself is the quality guarantee, not the model:
+
+| Strategy | What It Does |
+|----------|-------------|
+| **Step-by-step plans** | Instructions so detailed any model can follow them correctly |
+| **Style anchoring** | Read existing code before writing — match patterns exactly |
+| **Code pattern refs** | Every plan references existing files as style templates |
+| **Full verification suite** | Lint + type-check + tests + build after EVERY task |
+| **Atomic task sizing** | One function per task — less room for quality drift |
+| **Code review gates** | Human review for complex logic, regardless of model |
+
+**The result**: Whether Claude, Gemini, GPT, or an open-source model writes the code, **every commit passes the same quality bar**.
+
+> See [`references/model-resilience.md`](references/model-resilience.md) for full strategies.
+
+---
+
 ## Adaptations from Original GSD
 
 | Feature | Original (Claude Code) | Antigravity Port |

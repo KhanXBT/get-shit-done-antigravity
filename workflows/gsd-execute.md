@@ -78,18 +78,37 @@ Plan [N]-[P]: [Plan Name]
 
 For each plan in the wave, execute each task:
 
+> **🔄 MODEL RESILIENCE — Style Anchoring Protocol:**
+> Before writing ANY code, anchor to existing project style:
+> 1. Check the plan for **Code Patterns** section — read those reference files
+> 2. If no Code Patterns section — read 2-3 existing files in the same directory
+> 3. Note: import ordering, naming conventions, error handling, types, exports
+> 4. Match these patterns EXACTLY in new code — don't use model defaults
+>
+> This ensures consistent code quality regardless of which model is active.
+
 **For each task:**
 
 1. **Re-read the task** — literally view the PLAN.md file again to get exact instructions. Do NOT work from memory.
-2. **Execute the action** — write code, create files, modify existing files as specified
-3. **Verify the task** — run the verify step (tests, checks, manual inspection)
-4. **Read the verification output** — do NOT assume it passed. Read the actual terminal output or file contents.
-5. **Commit atomically:**
+2. **Style anchor** — read existing files referenced in Code Patterns (or 2-3 nearby files). Match their patterns.
+3. **Execute the action** — write code following the step-by-step instructions from the plan. Follow referenced patterns.
+4. **Run FULL verification suite** — not just the plan's verify step:
+   ```
+   VERIFICATION SUITE (run ALL applicable):
+   ✓ Type check:  tsc --noEmit (if TypeScript project)
+   ✓ Lint:        eslint/biome/prettier (if configured)
+   ✓ Tests:       test runner for affected area
+   ✓ Build:       build command (catches import/export errors)
+   ✓ Plan verify: the specific verify step from the plan
+   ```
+5. **Read the verification output** — do NOT assume it passed. Read the actual terminal output or file contents.
+6. **If any check fails** — fix the code BEFORE committing. Re-run the full suite.
+7. **Commit atomically:**
    ```bash
    git add [files]
    git commit -m "feat([NN]-[PP]): [task name]"
    ```
-6. **Report completion:**
+8. **Report completion:**
    ```
    ✓ Task [T]: [Task Name] — committed [hash]
    ```

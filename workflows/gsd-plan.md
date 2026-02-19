@@ -136,7 +136,19 @@ Using all gathered context (STATE, ROADMAP, REQUIREMENTS, CONTEXT, RESEARCH), cr
 - Standard depth: 3-5 plans per phase
 - Comprehensive depth: 5-10 plans per phase
 
-Each plan should be small enough to execute independently. Create files at `.planning/phases/[NN]-[slug]/[NN]-[PP]-PLAN.md`:
+Each plan should be small enough to execute independently.
+
+> **🔄 MODEL RESILIENCE — Plans must be model-proof:**
+> Antigravity may switch from Claude to Gemini mid-project when quota exceeds.
+> Plans must be **detailed enough that ANY model produces correct code:**
+> 1. **Spell out logic step-by-step** — don't write "implement login" → write exact steps
+> 2. **Include code patterns references** — specify existing files to match style from
+> 3. **Name explicit error handling** — don't leave it to model judgment
+> 4. **Spell out types/interfaces** — don't let models infer them
+> 5. **Keep tasks atomic** — one function/component per task reduces quality risk
+> See `references/model-resilience.md` for full strategies.
+
+Create files at `.planning/phases/[NN]-[slug]/[NN]-[PP]-PLAN.md`:
 
 ```markdown
 ---
@@ -154,27 +166,34 @@ requirements: [R1, R2] (which requirement IDs this addresses)
 ## Objective
 [What this plan achieves and why — 2-3 sentences]
 
+## Code Patterns (Model Resilience)
+Reference these existing files for code style:
+- [existing file 1] — [what pattern to match]
+- [existing file 2] — [what pattern to match]
+
+Conventions:
+- File naming: [kebab-case / camelCase / etc.]
+- Error handling: [pattern — e.g., use AppError class]
+- Types: [where to define, how to export]
+
 ## Tasks
 
 <task type="auto">
   <name>[Task Name]</name>
   <files>[files to create/modify]</files>
   <action>
-    [Specific implementation instructions]
-    [Include technical details, library usage, patterns to follow]
+    [DETAILED step-by-step instructions — specific enough for any model:]
+    1. [Import X from Y]
+    2. [Create function Z with parameters (a: string, b: number)]
+    3. [Validate inputs: check for null/empty, return 400 if invalid]
+    4. [Core logic: step by step]
+    5. [Error handling: wrap in try/catch, use specific error types]
+    6. [Return type: { field: type }]
+    
+    Match style from: [reference file path]
   </action>
-  <verify>[How to verify this task works — MUST be a runnable command or checkable output]</verify>
+  <verify>[How to verify — MUST be a runnable command: e.g., npm test, tsc --noEmit, curl endpoint]</verify>
   <done>[Definition of done — what's true when this task is complete]</done>
-</task>
-
-<task type="auto">
-  <name>[Task Name]</name>
-  <files>[files to create/modify]</files>
-  <action>
-    [Specific implementation instructions]
-  </action>
-  <verify>[How to verify — specific command, not vague "check it works"]</verify>
-  <done>[Definition of done]</done>
 </task>
 
 ## Must-Haves
