@@ -21,7 +21,7 @@ npx get-shit-done-antigravity
 
 <br>
 
-![GSD Antigravity Showcase](/Users/arshad/.gemini/antigravity/brain/f67d6853-3a6a-4b94-9070-3402631f1a28/gsd_antigravity_terminal_showcase_v106_1771471606773.png)
+![GSD Antigravity Showcase](/Users/arshad/.gemini/antigravity/brain/f67d6853-3a6a-4b94-9070-3402631f1a28/media__1771471760423.png)
 
 <br>
 
