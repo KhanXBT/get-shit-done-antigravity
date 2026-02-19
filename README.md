@@ -143,6 +143,8 @@ Inside Antigravity, type:
 
 > **🚀 Want full autonomy?** Use `/gsd-super` to build an entire project from a single prompt. It runs all stages below on its own.
 >
+> **🛡️ Want verified answers?** Use `/gsd-no-halluc [question]` or `/no-halluc [question]` for general Q&A with strict verification and citations.
+>
 > **Already have code?** Start with `/gsd-new-project` inside your existing repo. GSD will ask questions about what you're adding, not what already exists.
 
 ### 1. Initialize Project

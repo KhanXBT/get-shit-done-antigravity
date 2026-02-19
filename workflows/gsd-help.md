@@ -32,6 +32,7 @@ Display the following help information to the user:
 | Command              | What it does                                                |
 |----------------------|-------------------------------------------------------------|
 | /gsd-quick [desc]    | Execute small ad-hoc task with GSD guarantees               |
+| /gsd-no-halluc [q]   | **Anti-Hallucination Q&A**: Verified answers only           |
 | /gsd-progress        | Where am I? What's next?                                    |
 | /gsd-help            | Show this help message                                      |
 
