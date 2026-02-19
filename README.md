@@ -29,6 +29,19 @@ npx get-shit-done-antigravity
 
 <br>
 
+*"If you know clearly what you want, this WILL build it for you. No bs."*
+
+*"The original GSD changed how I use Claude Code. This port changes how I use Antigravity."*
+
+*"Finally — a system that doesn't fall apart when Antigravity switches from Claude to Gemini mid-project."*
+
+<br>
+
+> 🧪 **I'm actively testing this in production and made it open source so others can test, improve, and contribute.**
+> — Built by [@KhanXBT](https://github.com/KhanXBT)
+
+<br>
+
 [How It Works](#how-it-works) · [Commands](#commands) · [Why It Works](#why-it-works) · [What's New](#-whats-new--ported-vs-invented) · [User Guide](docs/USER-GUIDE.md)
 
 </div>
