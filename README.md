@@ -84,6 +84,25 @@ This isn't just a port. **~40% is adapted from the original GSD, ~60% is our own
 
 ---
 
+## ⚡ Super Mode — Full Autonomy
+
+**The first "walk away" build engine for AI coding agents.** 
+
+Give it a prompt or PRD, answer a few questions, and go grab a coffee. `/gsd-super` runs the entire lifecycle (v1.0.0 is a **1,314-line spec**) autonomously.
+
+### Core Capabilities:
+*   **PRD Intelligence**: Auto-expands one-liners into technical specs or parses 10-page PRDs into phased roadmaps.
+*   **Context Discovery**: Automatically detects project state. For existing projects, it **auto-branches** (`gsd-super/feature`) to keep your `main` branch 100% safe.
+*   **5-Tier Verification**: Every single task runs through a rigorous check: `Syntax → Types → Lint → Tests → Build`.
+*   **Visual Autonomous Testing**: The AI opens the app in the browser, clicks through your features, takes screenshots, and verifies the UI matches the spec.
+*   **Self-Debugging**: If a build fails, it classifies the error and retries with a new approach.
+*   **🔄 Anti-Hallucination & Loop Detection**:
+    *   **Same error 3x?** It stops the approach and pivots to a new library or architecture.
+    *   **Going in circles (A+B+A+B)?** It detects the loop, re-reads every file from disk, and starts the task fresh with clean context.
+    *   **5 approaches fail?** It stops and gives you a full diagnostic report instead of hallucinating a success.
+
+---
+
 ## Getting Started
 
 ### Installation
@@ -122,6 +141,8 @@ Inside Antigravity, type:
 
 ## How It Works
 
+> **🚀 Want full autonomy?** Use `/gsd-super` to build an entire project from a single prompt. It runs all stages below on its own.
+>
 > **Already have code?** Start with `/gsd-new-project` inside your existing repo. GSD will ask questions about what you're adding, not what already exists.
 
 ### 1. Initialize Project
