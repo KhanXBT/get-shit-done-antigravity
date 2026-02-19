@@ -103,6 +103,30 @@ For small tasks that don't need full ceremony:
 
 ---
 
+## Specialized Modes
+
+### ⚡ Super Mode
+
+**Command:** `/gsd-super [prompt]`
+
+For full autonomy. Give it a prompt or PRD and walk away. GSD Antigravity takes over the entire lifecycle:
+- Auto-detects context and auto-branches (`gsd-super/feature`)
+- Runs discuss → plan → execute → verify autonomously
+- Performs visual browser testing and automated test suites
+- Self-debugs and escapes hallucination loops
+
+### 🛡️ Anti-Hallucination Q&A
+
+**Command:** `/gsd-no-halluc [question]` (alias: `/no-halluc`)
+
+For general technical research and verified Q&A. This mode bypasses the standard workflow and activates a dedicated research engine:
+- **Strict Verification**: Every claim must be verified against official docs or the codebase.
+- **Citations**: Cites specific files, lines, or URLs for every answer.
+- **Confidence Scoring**: Tags answers with HIGH/MEDIUM/LOW confidence based on verification source.
+- **Uncertainty Marking**: Explicitly states when a claim cannot be verified instead of guessing.
+
+---
+
 ## Progress
 
 **Command:** `/gsd-progress`

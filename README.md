@@ -8,7 +8,7 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/KhanXBT/get-shit-done-antigravity?style=for-the-badge&logo=github&color=181717)](https://github.com/KhanXBT/get-shit-done-antigravity)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.0-green?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.0.5-green?style=for-the-badge)](CHANGELOG.md)
 [![Original GSD](https://img.shields.io/badge/based_on-GSD_v1.20.4-CB3837?style=for-the-badge)](https://github.com/gsd-build/get-shit-done)
 
 <br>
@@ -68,7 +68,7 @@ This isn't just a port. **~40% is adapted from the original GSD, ~60% is our own
 | Context freshness (`/clear` → new conversation) | ⚡ Adapted from GSD | Original uses `/clear`, we recommend new conversations |
 | Source verification hierarchy | ⚡ Adapted from GSD | Original uses Context7 MCP, we use `read_url_content` + `search_web` |
 | Checkpoints (wait for user) | ⚡ Adapted from GSD | Original uses `AskUserQuestion`, we use `notify_user` |
-| **🛡️ Anti-Hallucination Engine** | **🆕 Our Invention** | Structural safeguards in EVERY workflow file, not just agent prompts |
+| **🛡️ Anti-Hallucination Engine** | **🆕 Our Invention** | Structural safeguards + `/gsd-no-halluc` command for verified Q&A |
 | **🤖 Multi-Model Compatibility** | **🆕 Our Invention** | Per-model hallucination pattern guards (Claude, Gemini, GPT, OSS) |
 | **🔄 Model Resilience** | **🆕 Our Invention** | Code quality stays consistent when Claude quota → Gemini switch |
 | **📋 Code Patterns in Plans** | **🆕 Our Invention** | Plans reference existing files as style templates for any model |
@@ -369,6 +369,7 @@ HALLUCINATION LOOP DETECTION:
 | Command | What it does |
 |---------|-------------|
 | `/gsd-quick [desc]` | Ad-hoc task with GSD guarantees |
+| `/gsd-no-halluc [q]` | **Anti-Hallucination Q&A**: Verified answers only |
 | `/gsd-progress` | Where am I? What's next? |
 | `/gsd-help` | Show all commands |
 
@@ -397,13 +398,14 @@ Add, insert, or remove phases without rebuilding everything. Each phase is self-
 
 ```
 GSD-Antigravity/
-├── workflows/          — 8 Antigravity workflow definitions
+├── workflows/          — 9 Antigravity workflow definitions
 │   ├── gsd-new-project.md
 │   ├── gsd-discuss.md
 │   ├── gsd-plan.md
 │   ├── gsd-execute.md
 │   ├── gsd-verify.md
 │   ├── gsd-quick.md
+│   ├── gsd-no-halluc.md
 │   ├── gsd-progress.md
 │   └── gsd-help.md
 ├── agents/             — 11 specialized agent prompts
