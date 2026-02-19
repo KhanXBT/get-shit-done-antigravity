@@ -8,7 +8,7 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/KhanXBT/get-shit-done-antigravity?style=for-the-badge&logo=github&color=181717)](https://github.com/KhanXBT/get-shit-done-antigravity)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.6-green?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.0.7-green?style=for-the-badge)](CHANGELOG.md)
 [![Original GSD](https://img.shields.io/badge/based_on-GSD_v1.20.4-CB3837?style=for-the-badge)](https://github.com/gsd-build/get-shit-done)
 
 <br>
@@ -61,6 +61,12 @@ npx get-shit-done-antigravity
 **GSD for Antigravity** takes the methodology and makes it better. Same structured approach. Same atomic commits. **Plus original features the original GSD doesn't have** — because Antigravity's multi-model architecture creates problems that single-model tools never face.
 
 ---
+
+## [1.0.7] - 2025-02-19
+### Fixed
+- **README Rendering** — Moved showcase image to `assets/` with relative paths for GitHub/npm compatibility.
+
+## [1.0.6] - 2025-02-19
 
 ## 🆕 What's New — Ported vs Invented
 
