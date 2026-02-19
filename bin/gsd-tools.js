@@ -309,8 +309,14 @@ function formatSize(bytes) {
  * Display a header banner
  */
 function showHeader(title) {
-    const line = '━'.repeat(53);
+    console.log(colors.cyan('     ██████╗ ███████╗██████╗ '));
+    console.log(colors.cyan('    ██╔════╝ ██╔════╝██╔══██╗'));
+    console.log(colors.cyan('    ██║  ███╗███████╗██║  ██║'));
+    console.log(colors.cyan('    ██║   ██║╚════██║██║  ██║'));
+    console.log(colors.cyan('    ╚██████╔╝███████║██████╔╝'));
+    console.log(colors.cyan('     ╚═════╝ ╚══════╝╚═════╝ '));
     console.log('');
+    const line = '━'.repeat(53);
     console.log(` ${line}`);
     console.log(` GSD ► ${title}`);
     console.log(` ${line}`);

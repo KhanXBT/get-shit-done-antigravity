@@ -23,16 +23,17 @@ const dim = (s) => `\x1b[2m${s}\x1b[0m`;
 
 // ─── Banner ─────────────────────────────────────
 function showBanner() {
+    process.stdout.write('\x1b[2J\x1b[0;0H'); // Clear screen
     console.log('');
-    console.log(cyan('   ██████╗ ███████╗██████╗ '));
-    console.log(cyan('  ██╔════╝ ██╔════╝██╔══██╗'));
-    console.log(cyan('  ██║  ███╗███████╗██║  ██║'));
-    console.log(cyan('  ██║   ██║╚════██║██║  ██║'));
-    console.log(cyan('  ╚██████╔╝███████║██████╔╝'));
-    console.log(cyan('   ╚═════╝ ╚══════╝╚═════╝ '));
+    console.log(cyan('     ██████╗ ███████╗██████╗ '));
+    console.log(cyan('    ██╔════╝ ██╔════╝██╔══██╗'));
+    console.log(cyan('    ██║  ███╗███████╗██║  ██║'));
+    console.log(cyan('    ██║   ██║╚════██║██║  ██║'));
+    console.log(cyan('    ╚██████╔╝███████║██████╔╝'));
+    console.log(cyan('     ╚═════╝ ╚══════╝╚═════╝ '));
     console.log('');
-    console.log(`  GSD for Antigravity ${dim('v' + getVersion())}`);
-    console.log('  Spec-driven development workflows');
+    console.log('    ' + bold('GSD for Antigravity') + ' ' + dim('v' + getVersion()));
+    console.log('    ' + cyan('Full Autonomous Execution Mode Enabled'));
     console.log('');
 }
 
