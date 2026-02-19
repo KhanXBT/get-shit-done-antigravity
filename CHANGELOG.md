@@ -2,6 +2,11 @@
 
 All notable changes to GSD for Antigravity.
 
+## [1.0.6] - 2025-02-19
+### Changed
+- **Showcase Highlighting** — Explicitly featured "🛡️ Anti-Hallucination Q&A" in the primary header and tagline.
+- **Visual Authenticity** — Integrated real high-fidelity terminal screenshot for the project showcase.
+
 ## [1.0.5] - 2025-02-19
 ### Added
 - **🛡️ Anti-Hallucination Q&A Showcase** — Dedicated sections and highlighting for verified research mode in all documentation.
