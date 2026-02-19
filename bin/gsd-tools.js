@@ -22,10 +22,10 @@ const CONFIG_FILE = 'config.json';
 // ─── Colors ─────────────────────────────────────
 const colors = {
     orange: (s) => `\x1b[38;5;208m${s}\x1b[0m`,
-    yellow: (s) => `\x1b[33m${s}\x1b[0m`,
-    green: (s) => `\x1b[32m${s}\x1b[0m`,
-    blue: (s) => `\x1b[34m${s}\x1b[0m`,
-    cyan: (s) => `\x1b[36m${s}\x1b[0m`,
+    yellow: (s) => `\x1b[38;5;220m${s}\x1b[0m`,
+    green: (s) => `\x1b[38;5;82m${s}\x1b[0m`,
+    blue: (s) => `\x1b[38;5;33m${s}\x1b[0m`,
+    cyan: (s) => `\x1b[38;5;51m${s}\x1b[0m`,
     red: (s) => `\x1b[31m${s}\x1b[0m`,
     bold: (s) => `\x1b[1m${s}\x1b[0m`,
     dim: (s) => `\x1b[2m${s}\x1b[0m`,
@@ -311,11 +311,11 @@ function formatSize(bytes) {
  * Display a header banner
  */
 function showHeader(title) {
-    console.log(colors.orange('     ██████╗ ') + colors.yellow('███████╗') + colors.green('██████╗ '));
-    console.log(colors.orange('    ██╔════╝ ') + colors.yellow('██╔════╝') + colors.green('██╔══██╗'));
-    console.log(colors.yellow('    ██║  ███╗') + colors.green('███████╗') + colors.blue('██║  ██║'));
-    console.log(colors.yellow('    ██║   ██║') + colors.green('╚════██║') + colors.blue('██║  ██║'));
-    console.log(colors.green('    ╚██████╔╝') + colors.blue('███████║') + colors.cyan('██████╔╝'));
+    console.log(colors.orange('     ██████╗ ') + colors.orange('███████╗') + colors.yellow('██████╗ '));
+    console.log(colors.yellow('    ██╔════╝ ') + colors.yellow('██╔════╝') + colors.green('██╔══██╗'));
+    console.log(colors.green('    ██║  ███╗') + colors.green('███████╗') + colors.blue('██║  ██║'));
+    console.log(colors.blue('    ██║   ██║') + colors.blue('╚════██║') + colors.blue('██║  ██║'));
+    console.log(colors.blue('    ╚██████╔╝') + colors.cyan('███████║') + colors.cyan('██████╔╝'));
     console.log(colors.green('     ╚═════╝ ') + colors.blue('╚══════╝') + colors.cyan('╚═════╝ '));
     console.log(colors.dim('    Built by Arshad Khan'));
     console.log('');

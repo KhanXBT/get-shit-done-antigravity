@@ -14,13 +14,12 @@ const path = require('path');
 const os = require('os');
 const readline = require('readline');
 
-// ─── Colors ─────────────────────────────────────
-const red = (s) => `\x1b[31m${s}\x1b[0m`;
+// ─── Colors (Antigravity Palette) ───────────────
 const orange = (s) => `\x1b[38;5;208m${s}\x1b[0m`;
-const yellow = (s) => `\x1b[33m${s}\x1b[0m`;
-const green = (s) => `\x1b[32m${s}\x1b[0m`;
-const blue = (s) => `\x1b[34m${s}\x1b[0m`;
-const cyan = (s) => `\x1b[36m${s}\x1b[0m`;
+const yellow = (s) => `\x1b[38;5;220m${s}\x1b[0m`;
+const green = (s) => `\x1b[38;5;82m${s}\x1b[0m`;
+const blue = (s) => `\x1b[38;5;33m${s}\x1b[0m`;
+const cyan = (s) => `\x1b[38;5;51m${s}\x1b[0m`;
 const bold = (s) => `\x1b[1m${s}\x1b[0m`;
 const dim = (s) => `\x1b[2m${s}\x1b[0m`;
 
@@ -28,12 +27,12 @@ const dim = (s) => `\x1b[2m${s}\x1b[0m`;
 function showBanner() {
     process.stdout.write('\x1b[2J\x1b[0;0H'); // Clear screen
     console.log('');
-    console.log(orange('     ██████╗ ') + yellow('███████╗') + green('██████╗ '));
-    console.log(orange('    ██╔════╝ ') + yellow('██╔════╝') + green('██╔══██╗'));
-    console.log(yellow('    ██║  ███╗') + green('███████╗') + blue('██║  ██║'));
-    console.log(yellow('    ██║   ██║') + green('╚════██║') + blue('██║  ██║'));
-    console.log(green('    ╚██████╔╝') + blue('███████║') + cyan('██████╔╝'));
-    console.log(green('     ╚═════╝ ') + blue('╚══════╝') + cyan('╚═════╝ '));
+    console.log(orange('     ██████╗ ') + orange('███████╗') + yellow('██████╗ '));
+    console.log(yellow('    ██╔════╝ ') + yellow('██╔════╝') + green('██╔══██╗'));
+    console.log(green('    ██║  ███╗') + green('███████╗') + blue('██║  ██║'));
+    console.log(blue('    ██║   ██║') + blue('╚════██║') + blue('██║  ██║'));
+    console.log(blue('    ╚██████╔╝') + cyan('███████║') + cyan('██████╔╝'));
+    console.log(cyan('     ╚═════╝ ') + cyan('╚══════╝') + cyan('╚═════╝ '));
     console.log('');
     console.log('    ' + bold('GSD for Antigravity') + ' ' + dim('v' + getVersion()));
     console.log('    ' + green('The first autonomous, multi-model development engine.'));

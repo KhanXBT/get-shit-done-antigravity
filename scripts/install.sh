@@ -5,26 +5,26 @@
 
 set -e
 
-CYAN='\033[0;36m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
+CYAN='\033[38;5;51m'
+GREEN='\033[38;5;82m'
+YELLOW='\033[38;5;220m'
 ORANGE='\033[38;5;208m'
-BLUE='\033[0;34m'
+BLUE='\033[38;5;33m'
 BOLD='\033[1m'
 DIM='\033[2m'
 NC='\033[0m'
 
 echo ""
-echo -e "${ORANGE}     ██████╗ ${YELLOW}███████╗${GREEN}██████╗ "
-echo -e "${ORANGE}    ██╔════╝ ${YELLOW}██╔════╝${GREEN}██╔══██╗"
-echo -e "${YELLOW}    ██║  ███╗${GREEN}███████╗${BLUE}██║  ██║"
-echo -e "${YELLOW}    ██║   ██║${GREEN}╚════██║${BLUE}██║  ██║"
-echo -e "${GREEN}    ╚██████╔╝${BLUE}███████║${CYAN}██████╔╝"
-echo -e "${GREEN}     ╚═════╝ ${BLUE}╚══════╝${CYAN}╚═════╝ ${NC}"
+echo -e "    ${ORANGE}██████╗ ${ORANGE}███████╗${YELLOW}██████╗ "
+echo -e "    ${YELLOW}██╔════╝ ${YELLOW}██╔════╝${GREEN}██╔══██╗"
+echo -e "    ${GREEN}██║  ███╗${GREEN}███████╗${BLUE}██║  ██║"
+echo -e "    ${BLUE}██║   ██║${BLUE}╚════██║${BLUE}██║  ██║"
+echo -e "    ${BLUE}╚██████╔╝${CYAN}███████║${CYAN}██████╔╝"
+echo -e "    ${CYAN} ╚═════╝ ${CYAN}╚══════╝${CYAN}╚═════╝ ${NC}"
 echo ""
-echo -e "  ${BOLD}GSD for Antigravity${NC}"
-echo -e "  ${GREEN}The first autonomous, multi-model development engine.${NC}"
-echo -e "  ${DIM}Built by Arshad Khan${NC}"
+echo -e "    ${BOLD}GSD for Antigravity${NC}"
+echo -e "    ${GREEN}The first autonomous, multi-model development engine.${NC}"
+echo -e "    ${DIM}Built by Arshad Khan${NC}"
 echo ""
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
