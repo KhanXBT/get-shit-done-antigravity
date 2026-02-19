@@ -114,17 +114,40 @@ Inside Antigravity, type:
 ```
 /gsd-new-project
 ```
-Answer questions about your vision, users, stack preferences, constraints. GSD researches the domain ecosystem — standard stacks, expected features, common pitfalls — then creates requirements and a phased roadmap.
+One command, one flow. The system:
 
-**Creates:** `PROJECT.md`, `REQUIREMENTS.md`, `ROADMAP.md`, `STATE.md`
+- **Questions** — Asks until it understands your idea completely (goals, constraints, tech preferences, edge cases). Challenges vague terms, surfaces assumptions, finds edge cases.
+- **Research** — Investigates the domain ecosystem — standard stacks, expected features, common pitfalls (optional but recommended). Every claim is tagged with confidence levels: **HIGH** (verified via docs), **MEDIUM** (searched), **LOW** (flagged to you).
+- **Requirements** — Extracts what's v1, v2, and out of scope. Presented for your approval before continuing.
+- **Roadmap** — Creates phases mapped to requirements. Each phase is a self-contained deliverable.
+
+You approve the roadmap. Now you're ready to build.
+
+**Creates:** `PROJECT.md`, `REQUIREMENTS.md`, `ROADMAP.md`, `STATE.md`, `.planning/research/`
 
 ### 2. Discuss Phase
 ```
 /gsd-discuss 1
 ```
-Before planning, capture HOW you want things built. GSD identifies gray areas — things that could go multiple ways — and presents concrete choices:
+This is where you shape the implementation.
 
-*"Cards, list, or timeline layout?" · "Infinite scroll or pagination?" · "You decide" is always an option.*
+Your roadmap has a sentence or two per phase. That's not enough context to build something the way you imagine it. This step captures your preferences before anything gets researched or planned.
+
+The system analyzes the phase and identifies **gray areas** based on what's being built:
+
+- **Visual features** → Layout, density, interactions, empty states
+- **APIs/CLIs** → Response format, flags, error handling, verbosity
+- **Content systems** → Structure, tone, depth, flow
+- **Organization tasks** → Grouping criteria, naming, exceptions
+
+For each area you select, it asks until you're satisfied. The output — `CONTEXT.md` — feeds directly into the next two steps:
+
+- **Researcher reads it** — Knows what patterns to investigate ("user wants card layout" → research card component libraries)
+- **Planner reads it** — Knows what decisions are locked ("infinite scroll decided" → plan includes scroll handling)
+
+Every decision is recorded with attribution: **DECIDED** (you chose explicitly) vs **SUGGESTED** (AI proposed, you agreed). This prevents the model from silently overriding your choices.
+
+The deeper you go here, the more the system builds what you actually want. Skip it and you get reasonable defaults. Use it and you get your vision.
 
 **Creates:** `CONTEXT.md` with locked decisions
 
@@ -132,17 +155,33 @@ Before planning, capture HOW you want things built. GSD identifies gray areas �
 ```
 /gsd-plan 1
 ```
-Researches implementation approaches, creates atomic task plans with XML structure, verifies plans against requirements:
+The system:
+
+- **Researches** — Investigates how to implement this phase, guided by your `CONTEXT.md` decisions. Uses source verification: official docs first, web search second, training data only as last resort (and flagged).
+- **Plans** — Creates 2-5 atomic task plans with XML structure. Each plan includes a **Code Patterns** section referencing existing files as style templates — so any model produces consistent code.
+- **Verifies** — Checks plans against requirements and context decisions, loops until they pass.
+
+Each plan is detailed enough that **any AI model can execute it correctly** — step-by-step instructions, not vague descriptions:
 
 ```xml
 <task type="auto">
   <name>Create login endpoint</name>
   <files>src/api/auth/login.ts</files>
-  <action>Validate credentials, return httpOnly cookie</action>
-  <verify>POST /api/auth/login returns 200 + Set-Cookie</verify>
+  <action>
+    1. Import bcrypt, jwt, prisma client
+    2. Validate body: { email: string, password: string } → 400 if missing
+    3. prisma.user.findUnique({ where: { email } }) → 401 if not found
+    4. bcrypt.compare(password, user.passwordHash) → 401 if mismatch
+    5. jwt.sign({ userId, role }, JWT_SECRET, { expiresIn: '7d' })
+    6. Set httpOnly cookie, return { user: { id, email, name } }
+    Match style from: src/api/users/get-user.ts
+  </action>
+  <verify>POST /api/auth/login returns 200 + Set-Cookie header</verify>
   <done>Valid credentials return cookie, invalid return 401</done>
 </task>
 ```
+
+Why this level of detail matters: when Antigravity switches from Claude to Gemini mid-project (quota exceeded), the plan itself guarantees quality — not the model.
 
 **Creates:** `RESEARCH.md`, `01-PLAN.md`, `02-PLAN.md`, etc.
 
@@ -150,12 +189,41 @@ Researches implementation approaches, creates atomic task plans with XML structu
 ```
 /gsd-execute 1
 ```
-Executes each task from the plans with atomic git commits. Each task = one commit. Failed tasks can be retried, skipped, or stopped.
+The system:
+
+- **Loads plans** — Re-reads every plan file from disk (never from memory — anti-hallucination safeguard)
+- **Style anchors** — Before writing any code, reads existing files in the same area to match their exact patterns
+- **Runs tasks in waves** — Wave 1 first, Wave 2 after Wave 1 completes
+- **Commits per task** — Every task gets its own atomic git commit
+- **Runs full verification suite** — After EVERY task: lint + type-check + tests + build. Not just the plan's verify step.
+- **Verifies against goals** — Checks the codebase delivers what the phase promised
 
 ```
 abc123f feat(01-01): add user registration form
 def456g feat(01-02): implement email validation
 hij789k feat(01-03): create registration endpoint
+```
+
+How wave execution works:
+
+```
+┌───────────────────────────────────────────────────────────┐
+│  PHASE EXECUTION                                          │
+├───────────────────────────────────────────────────────────┤
+│                                                           │
+│  WAVE 1                    WAVE 2              WAVE 3     │
+│  ┌─────────┐ ┌─────────┐  ┌─────────┐ ┌─────────┐  ┌────────┐│
+│  │ Plan 01 │ │ Plan 02 │→ │ Plan 03 │ │ Plan 04 │→ │Plan 05 ││
+│  │ User    │ │ Product │  │ Orders  │ │ Cart    │  │Checkout││
+│  │ Model   │ │ Model   │  │ API     │ │ API     │  │ UI     ││
+│  └─────────┘ └─────────┘  └─────────┘ └─────────┘  └────────┘│
+│       │           │             ↑           ↑           ↑     │
+│       └───────────┴─────────────┴───────────┘           │     │
+│              Dependencies: Plan 03 needs Plan 01        │     │
+│                          Plan 04 needs Plan 02          │     │
+│                          Plan 05 needs Plans 03 + 04    │     │
+│                                                           │
+└───────────────────────────────────────────────────────────┘
 ```
 
 **Creates:** `SUMMARY.md`, `VERIFICATION.md`
@@ -164,22 +232,34 @@ hij789k feat(01-03): create registration endpoint
 ```
 /gsd-verify 1
 ```
-User acceptance testing — one test at a time, you confirm each feature works:
+This is where you confirm it actually works.
+
+The system:
+
+- **Extracts testable deliverables** — What you should be able to do now, based on actual `SUMMARY.md` contents (not hallucinated features)
+- **Walks you through one at a time** — Shows expected behavior, waits for your response
 
 ```
-╔════════════════════════════════════════╗
-║  TEST 1/5: User Registration          ║
-╚════════════════════════════════════════╝
+╔══════════════════════════════════════════════════════════════╗
+║  TEST 1/5: User Registration                                ║
+╚══════════════════════════════════════════════════════════════╝
 
 Expected: Form shows name, email, password fields.
   Submit validates all fields before sending.
 
-→ Type "pass" or describe what's wrong
+→ Type "pass" if correct, "skip" to skip, or describe what's wrong
 ```
+
+- **Records your exact words** — If something's wrong, your description is saved verbatim (not paraphrased by the AI)
+- **Infers severity** — "crashes" = blocker, "wrong color" = cosmetic. Never asks "how severe?"
+- **Creates fix plans** — Issues become ready-to-execute plans for the next cycle
+
+If everything passes, you move on. If something's broken, run `/gsd-plan` again — it creates fix plans from the UAT results.
 
 **Creates:** `UAT.md` with gap analysis
 
-### 6. Repeat → Next Phase → Next Milestone
+### 6. Repeat → Next Phase
+
 ```
 /gsd-discuss 2
 /gsd-plan 2
@@ -190,12 +270,16 @@ Expected: Form shows name, email, password fields.
 
 Loop **discuss → plan → execute → verify** until all phases complete.
 
+Each phase gets your input (discuss), verified research (plan), quality-checked execution (execute), and human verification (verify). Context stays fresh. Quality stays high. **Even when the model switches mid-project.**
+
+💡 **Tip:** Start a new conversation between each workflow step for optimal context freshness.
+
 ### Quick Mode
 ```
 /gsd-quick Add dark mode toggle
 ```
 
-For ad-hoc tasks that don't need full planning. Same atomic commits, same state tracking, less ceremony.
+For ad-hoc tasks that don't need full planning. Same atomic commits, same state tracking, same verification suite — less ceremony.
 
 ---
 
