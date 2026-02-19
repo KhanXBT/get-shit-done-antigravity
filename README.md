@@ -29,11 +29,11 @@ npx get-shit-done-antigravity
 
 <br>
 
-*"If you know clearly what you want, this WILL build it for you. No bs."*
+*"I stopped losing work to context rot. Every phase picks up exactly where the last one left off."*
 
-*"The original GSD changed how I use Claude Code. This port changes how I use Antigravity."*
+*"Claude hit quota, Gemini took over, and the code quality didn't drop. That's when I knew this was different."*
 
-*"Finally — a system that doesn't fall apart when Antigravity switches from Claude to Gemini mid-project."*
+*"It's not just a planning tool — it actually catches when the AI is making stuff up."*
 
 <br>
 
