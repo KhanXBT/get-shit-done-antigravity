@@ -8,18 +8,23 @@ set -e
 CYAN='\033[0;36m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
+ORANGE='\033[38;5;208m'
+BLUE='\033[0;34m'
+BOLD='\033[1m'
+DIM='\033[2m'
 NC='\033[0m'
 
 echo ""
-echo -e "${CYAN}     ██████╗ ███████╗██████╗ "
-echo "    ██╔════╝ ██╔════╝██╔══██╗"
-echo "    ██║  ███╗███████╗██║  ██║"
-echo "    ██║   ██║╚════██║██║  ██║"
-echo "    ╚██████╔╝███████║██████╔╝"
-echo -e "     ╚═════╝ ╚══════╝╚═════╝ ${NC}"
+echo -e "${ORANGE}     ██████╗ ${YELLOW}███████╗${GREEN}██████╗ "
+echo -e "${ORANGE}    ██╔════╝ ${YELLOW}██╔════╝${GREEN}██╔══██╗"
+echo -e "${YELLOW}    ██║  ███╗${GREEN}███████╗${BLUE}██║  ██║"
+echo -e "${YELLOW}    ██║   ██║${GREEN}╚════██║${BLUE}██║  ██║"
+echo -e "${GREEN}    ╚██████╔╝${BLUE}███████║${CYAN}██████╔╝"
+echo -e "${GREEN}     ╚═════╝ ${BLUE}╚══════╝${CYAN}╚═════╝ ${NC}"
 echo ""
-echo "  GSD for Antigravity"
-echo "  Spec-driven development workflows"
+echo -e "  ${BOLD}GSD for Antigravity${NC}"
+echo -e "  ${GREEN}The first autonomous, multi-model development engine.${NC}"
+echo -e "  ${DIM}Built by Arshad Khan${NC}"
 echo ""
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
