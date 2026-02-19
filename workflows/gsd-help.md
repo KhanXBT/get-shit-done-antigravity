@@ -11,29 +11,30 @@ Display the following help information to the user:
  GSD for Antigravity — Command Reference
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## Core Workflow
+## ⚡ Core Innovation Pillars
 
-| Command              | What it does                                                |
-|----------------------|-------------------------------------------------------------|
-| /gsd-new-project     | Full initialization: questions → research → requirements → roadmap |
-| /gsd-discuss [N]     | Capture implementation decisions before planning            |
-| /gsd-plan [N]        | Research + plan + verify for a phase                        |
-| /gsd-execute [N]     | Execute all plans for a phase with atomic git commits       |
-| /gsd-verify [N]      | Verify built features through user acceptance testing       |
+| Command              | Profile       | What it does                                                |
+|----------------------|---------------|-------------------------------------------------------------|
+| /gsd-super [prompt]  | **Autonomous** | FULL AUTONOMY: AI builds from prompt to production on its own |
+| /gsd-no-halluc [q]   | **Verified**   | Technical Q&A with mandatory external research and citations |
+| /gsd-commit-memory   | **Continuity** | Distill context into long-term memory for future AI awareness |
 
-## ⚡ Autonomous
+## Standard Workflow
 
-| Command              | What it does                                                |
-|----------------------|-------------------------------------------------------------|
-| /gsd-super [prompt]  | FULL AUTONOMY: AI builds from prompt to production on its own |
+| Command              | Task          | What it does                                                |
+|----------------------|---------------|-------------------------------------------------------------|
+| /gsd-new-project     | **Setup**     | Questions → Research → Requirements → Roadmap              |
+| /gsd-discuss [N]     | **Context**   | Capture implementation decisions before planning            |
+| /gsd-plan [N]        | **Blueprint** | Technical planning and research for a phase                |
+| /gsd-execute [N]     | **Builder**   | Execute all plans with atomic git commits                   |
+| /gsd-verify [N]      | **Audit**     | Verify built features through user acceptance testing       |
 
 ## Utilities
 
 | Command              | What it does                                                |
 |----------------------|-------------------------------------------------------------|
-| /gsd-quick [desc]    | Execute small ad-hoc task with GSD guarantees               |
-| /gsd-no-halluc [q]   | **Anti-Hallucination Q&A**: Verified answers only           |
-| /gsd-progress        | Where am I? What's next?                                    |
+| /gsd-quick [desc]    | Execute small ad-hoc task with GSD quality guarantees       |
+| /gsd-progress        | Pulse check: Current state, roadblocks, and next steps      |
 | /gsd-help            | Show this help message                                      |
 
 ## Typical Workflow
