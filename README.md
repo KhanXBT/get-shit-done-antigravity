@@ -357,7 +357,9 @@ Unlike the original GSD (Claude-only), GSD for Antigravity works across **all AI
 
 ## 🔄 Model Resilience — Consistent Quality Across Switches
 
-When Claude's quota exceeds and Antigravity switches to Gemini or GPT, code quality can drop. GSD prevents this with **plan-driven quality** — the plan itself is the quality guarantee, not the model:
+> *"When Claude's model quota is exceeded in Antigravity and we switch to Gemini, the quality of code decreases — so what can we do so the code quality and workflow isn't affected with model changing?"*
+
+**Every Antigravity user faces this.** GSD solves it with **plan-driven quality** — the plan itself is the quality guarantee, not the model:
 
 | Strategy | What It Does |
 |----------|-------------|
