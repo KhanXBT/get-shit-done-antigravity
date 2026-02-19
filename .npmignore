@@ -1,0 +1,20 @@
+# Exclude development and meta files from npm package
+.planning/
+.git/
+.gitignore
+.agent/
+brain/
+scripts/
+docs/
+templates/
+references/
+agents/
+walkthrough.md
+task.md
+monetization_roadmap.md
+marketing_plan.md
+CHANGELOG.md
+
+# Keep the basics
+node_modules/
+npm-debug.log

@@ -18,6 +18,8 @@ const ROADMAP_FILE = 'ROADMAP.md';
 const REQUIREMENTS_FILE = 'REQUIREMENTS.md';
 const PROJECT_FILE = 'PROJECT.md';
 const CONFIG_FILE = 'config.json';
+const MEMORY_DIR = 'memory';
+const PROJECT_MEMORY_FILE = 'PROJECT-MEMORY.md';
 
 // ─── Colors ─────────────────────────────────────
 const colors = {
@@ -67,6 +69,36 @@ function initPlanningDir(baseDir = process.cwd()) {
     }
 
     return planningPath;
+}
+
+/**
+ * Ensure the memory directory exists
+ */
+function ensureMemoryDir(planningDir) {
+    const memoryPath = path.join(planningDir, MEMORY_DIR);
+    if (!fs.existsSync(memoryPath)) {
+        fs.mkdirSync(memoryPath, { recursive: true });
+    }
+    return memoryPath;
+}
+
+/**
+ * Append a memory entry to PROJECT-MEMORY.md
+ */
+function commitMemory(planningDir, entry) {
+    const memoryDir = ensureMemoryDir(planningDir);
+    const memoryFile = path.join(memoryDir, PROJECT_MEMORY_FILE);
+
+    const timestamp = getDateTimeString();
+    const formattedEntry = `\n## [${timestamp}]\n${entry}\n\n---\n`;
+
+    if (!fs.existsSync(memoryFile)) {
+        fs.writeFileSync(memoryFile, `# Project Memory Log\n\nThis file contains permanent architectural decisions and learned context.\n\n${formattedEntry}`);
+    } else {
+        fs.appendFileSync(memoryFile, formattedEntry);
+    }
+
+    return memoryFile;
 }
 
 // ─── State Management ───────────────────────────
@@ -319,7 +351,7 @@ function showHeader(title) {
     console.log(colors.green('     ╚═════╝ ') + colors.blue('╚══════╝') + colors.cyan('╚═════╝ '));
     console.log(colors.dim('    Built by Arshad Khan'));
     console.log(colors.green('    A spec-driven development workflow system for Antigravity — featuring a fully'));
-    console.log(colors.green('    autonomous ⚡ Super Mode, 🛡️ Anti-Hallucination Q&A, and model resilience protocols.'));
+    console.log(colors.green('    autonomous ⚡ Super Mode, 🛡️ Anti-Hallucination Q&A, and 🧠 Project Memory protocols.'));
     console.log('');
     const line = '━'.repeat(53);
     console.log(` ${line}`);
@@ -458,6 +490,21 @@ switch (command) {
     case 'version':
         console.log(getVersion());
         break;
+    case 'commit-memory':
+    case 'memo':
+        const pDir = findPlanningDir();
+        if (!pDir) {
+            console.log(colors.red('  ✗ No .planning/ directory found'));
+            process.exit(1);
+        }
+        const text = process.argv.slice(3).join(' ');
+        if (!text) {
+            console.log(colors.yellow('  Usage: gsd commit-memory "<memory text>"'));
+            process.exit(1);
+        }
+        commitMemory(pDir, text);
+        console.log(colors.green('  ✓ Memory committed to PROJECT-MEMORY.md'));
+        break;
     case 'help':
     case '--help':
     case '-h':
@@ -484,5 +531,7 @@ module.exports = {
     getDateTimeString,
     showHeader,
     showComplete,
+    commitMemory,
+    ensureMemoryDir,
     colors,
 };
