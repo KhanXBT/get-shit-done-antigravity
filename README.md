@@ -2,7 +2,18 @@
 
 # GSD for Antigravity 🚀
 
+
 **A spec-driven development workflow system for [Antigravity](https://deepmind.google/) — featuring a fully autonomous ⚡ [Super Mode](#-super-mode--full-autonomy), 🛡️ [Anti-Hallucination Q&A](#-anti-hallucination-qa--verified-research), and model resilience protocols.**
+
+<br>
+
+*The complexity is in the system, not in your workflow.*
+
+*Behind the scenes: context engineering, structured XML plans, state management.*
+
+*What you see: a few commands that just work.*
+
+
 
 **Built on [Get Shit Done](https://github.com/gsd-build/get-shit-done), solving context rot, hallucination, and quality drops across models.**
 
@@ -25,13 +36,6 @@ npx get-shit-done-antigravity
 
 <br>
 
-<br>
-
-*The complexity is in the system, not in your workflow.*
-
-*Behind the scenes: context engineering, structured XML plans, state management.*
-
-*What you see: a few commands that just work.*
 
 <br>
 
