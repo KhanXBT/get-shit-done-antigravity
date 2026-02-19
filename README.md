@@ -76,6 +76,7 @@ This isn't just a port. **~40% is adapted from the original GSD, ~60% is our own
 | **✅ Full Verification Suite** | **🆕 Our Invention** | Lint + types + tests + build after EVERY task, not just plan verify |
 | **📝 Decision Attribution** | **🆕 Our Invention** | Tracks USER-decided vs AI-suggested decisions |
 | **🏷️ Confidence Levels** | **🆕 Our Invention** | Research tagged HIGH/MED/LOW by verification source |
+| **⚡ Super Mode (`/gsd-super`)** | **🆕 Our Invention** | Full autonomy: prompt → production with zero human input |
 
 > **The original GSD doesn't need these features** because it only runs on Claude.
 > Antigravity rotates between models — creating problems that single-model tools never face.
@@ -294,6 +295,32 @@ Each phase gets your input (discuss), verified research (plan), quality-checked 
 
 For ad-hoc tasks that don't need full planning. Same atomic commits, same state tracking, same verification suite — less ceremony.
 
+### ⚡ Super Mode
+```
+/gsd-super Build a task management app with Next.js and Prisma
+```
+
+**Full autonomy.** Give it a prompt or PRD, answer a few setup questions, then walk away. The AI:
+
+1. **Detects context** — Existing project? Creates a new branch (never touches main). New project? Starts fresh.
+2. **Interviews you once** — Autonomy level (full/milestone pauses/custom), testing mode (visual/automated/both), tech stack, deployment target, quality bar.
+3. **Builds everything** — Auto-runs discuss → plan → execute → verify for every phase.
+4. **Tests continuously** — Opens the browser, clicks through UI, takes screenshots. Runs test suites. Both if you want.
+5. **Self-debugs** — When something breaks, auto-debugs and retries. With **hallucination loop detection**:
+
+```
+HALLUCINATION LOOP DETECTION:
+│  Same error 3 times → switch to completely different approach
+│  5 approaches all fail → STOP and notify user:
+│  "I'm stuck on [X]. Here's what I tried. Need your input."
+│  Circular fix detected (A→B→A→B) → re-read files, start fresh
+```
+
+6. **Ships** — Documentation, tests, CI/CD, deploys to Vercel/Netlify/Railway.
+7. **Reports** — "Done. Here's what I built, here's the deployed URL, here's how to run it."
+
+> **This feature is a 🆕 GSD Antigravity invention.** Not found in the original GSD or any other AI coding tool.
+
 ---
 
 ## Commands
@@ -307,6 +334,12 @@ For ad-hoc tasks that don't need full planning. Same atomic commits, same state 
 | `/gsd-plan [N]` | Research + plan + verify for a phase |
 | `/gsd-execute [N]` | Execute all plans with atomic git commits |
 | `/gsd-verify [N]` | User acceptance testing |
+
+### ⚡ Autonomous
+
+| Command | What it does |
+|---------|-------------|
+| `/gsd-super [prompt]` | **FULL AUTONOMY**: AI builds from prompt to production on its own |
 
 ### Utilities
 

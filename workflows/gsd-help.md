@@ -21,6 +21,12 @@ Display the following help information to the user:
 | /gsd-execute [N]     | Execute all plans for a phase with atomic git commits       |
 | /gsd-verify [N]      | Verify built features through user acceptance testing       |
 
+## ⚡ Autonomous
+
+| Command              | What it does                                                |
+|----------------------|-------------------------------------------------------------|
+| /gsd-super [prompt]  | FULL AUTONOMY: AI builds from prompt to production on its own |
+
 ## Utilities
 
 | Command              | What it does                                                |
