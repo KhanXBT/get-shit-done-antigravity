@@ -349,12 +349,18 @@ function showHelp() {
     showHeader('COMMAND REFERENCE');
     console.log(colors.bold('  GSD Tools — State management utilities'));
     console.log('');
+    console.log('  Usage:');
+    console.log(`    ${colors.cyan('gsd <command>')}`);
+    console.log('');
     console.log('  Commands:');
-    console.log('    status       Show current project status');
-    console.log('    validate     Check .planning/ directory integrity');
-    console.log('    init         Initialize .planning/ directory');
-    console.log('    version      Show version');
-    console.log('    help         Show this help');
+    console.log(`    ${colors.green('status')}       Show current project status`);
+    console.log(`    ${colors.green('validate')}     Check .planning/ directory integrity`);
+    console.log(`    ${colors.green('init')}         Initialize .planning/ directory`);
+    console.log(`    ${colors.green('version')}      Show version`);
+    console.log(`    ${colors.green('help')}         Show this help`);
+    console.log('');
+    console.log(colors.dim('  Note: Slash commands like /gsd-no-halluc are for the AI chat interface.'));
+    console.log(colors.dim('  Terminal commands use the "gsd" prefix.'));
     console.log('');
 }
 
