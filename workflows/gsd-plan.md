@@ -6,17 +6,42 @@ description: Research and create executable task plans for a phase
 
 Create executable task plans for a roadmap phase. Default flow: Research (if enabled) → Plan → Verify → Done.
 
+> **🛡️ ANTI-HALLUCINATION PROTOCOL — ACTIVE IN THIS WORKFLOW**
+> Plans drive ALL downstream execution. Hallucinated APIs, wrong library names, or fabricated patterns here will compound into broken code. VERIFY every technical claim before writing it into a plan.
+
 ## Arguments
 
 The user should provide a phase number, e.g., `/gsd-plan 1`
 
 If no phase number provided, read ROADMAP.md and detect the next unplanned phase.
 
+## Multi-Model Safeguard: Source Verification
+
+**MANDATORY for ALL research and planning — regardless of which AI model is running:**
+
+```
+VERIFICATION HIERARCHY:
+1. read_url_content → Official documentation (highest trust)
+2. search_web       → Current information (verify with #1)
+3. Existing codebase → What's actually in the project
+4. Training data    → LOWEST trust — NEVER use alone for API details
+
+CONFIDENCE LEVELS (assign to every technical claim):
+- HIGH:   Verified via official docs or read_url_content
+- MEDIUM: Found via search_web + cross-referenced
+- LOW:    From training data only — FLAG THIS to user
+
+⚠️ NEVER write API syntax, library versions, or config patterns
+   into a PLAN.md from training data alone.
+⚠️ If you cannot verify a library exists → tell the user.
+⚠️ If unsure about an approach → present options, don't guess.
+```
+
 ## Steps
 
 ### 1. Validate
 
-Read `.planning/ROADMAP.md` and `.planning/STATE.md`.
+**Actually read** (not recall) `.planning/ROADMAP.md` and `.planning/STATE.md`.
 
 **If no `.planning/` directory:** "No GSD project found. Run /gsd-new-project first."
 **If phase not found:** "Phase [N] not found. Available phases: [list]"
@@ -31,7 +56,7 @@ If CONTEXT.md doesn't exist, ask:
 
 ### 2. Load Context
 
-Read these files to build full context:
+**Read each file individually** — do NOT work from memory of previous reads:
 - `.planning/STATE.md` — current project state
 - `.planning/ROADMAP.md` — roadmap and phase details
 - `.planning/REQUIREMENTS.md` — full requirements
@@ -57,6 +82,12 @@ Research how to implement this phase. Consider:
 - Libraries, tools, or approaches that would work well
 - Potential pitfalls specific to this phase
 
+> **🛡️ RESEARCH VERIFICATION — For each library/tool/API mentioned:**
+> 1. Use `search_web` to confirm it exists and is actively maintained
+> 2. Use `read_url_content` on its official docs/npm page/GitHub
+> 3. Verify the API syntax matches current version (NOT training data)
+> 4. If you cannot verify → mark as "UNVERIFIED" and flag to user
+
 Write research findings to `.planning/phases/[NN]-[slug]/[NN]-RESEARCH.md`:
 
 ```markdown
@@ -66,9 +97,9 @@ Write research findings to `.planning/phases/[NN]-[slug]/[NN]-RESEARCH.md`:
 [Recommended approach based on context]
 
 ## Libraries & Tools
-| Library | Purpose | Why |
-|---------|---------|-----|
-| [lib] | [purpose] | [rationale] |
+| Library | Purpose | Why | Confidence | Source |
+|---------|---------|-----|-----------|--------|
+| [lib] | [purpose] | [rationale] | HIGH/MED/LOW | [URL or "verified via search"] |
 
 ## Patterns to Follow
 - [Pattern 1 and when to use it]
@@ -79,8 +110,11 @@ Write research findings to `.planning/phases/[NN]-[slug]/[NN]-RESEARCH.md`:
 - [Pitfall 2] — [prevention strategy]
 
 ## Key References
-- [Reference 1]
-- [Reference 2]
+- [Reference 1 — actual URLs where possible]
+- [Reference 2 — actual URLs where possible]
+
+## Unverified Claims
+[Any claims that could NOT be verified — user should review these]
 
 ---
 *Researched: [date]*
@@ -129,7 +163,7 @@ requirements: [R1, R2] (which requirement IDs this addresses)
     [Specific implementation instructions]
     [Include technical details, library usage, patterns to follow]
   </action>
-  <verify>[How to verify this task works]</verify>
+  <verify>[How to verify this task works — MUST be a runnable command or checkable output]</verify>
   <done>[Definition of done — what's true when this task is complete]</done>
 </task>
 
@@ -139,7 +173,7 @@ requirements: [R1, R2] (which requirement IDs this addresses)
   <action>
     [Specific implementation instructions]
   </action>
-  <verify>[How to verify]</verify>
+  <verify>[How to verify — specific command, not vague "check it works"]</verify>
   <done>[Definition of done]</done>
 </task>
 
@@ -151,6 +185,12 @@ requirements: [R1, R2] (which requirement IDs this addresses)
 ---
 *Created: [date]*
 ```
+
+> **🛡️ PLAN QUALITY GATE — Before writing each plan, verify:**
+> - File paths reference files that exist (or will be created by earlier tasks)
+> - Library imports use VERIFIED API syntax (not training data guesses)
+> - Verify steps are EXECUTABLE commands (not "check it works")
+> - Each task is independent enough to commit atomically
 
 ### 5. Verify Plans
 
@@ -166,9 +206,11 @@ Display:
 Review all created plans against:
 - **Requirements coverage** — do all phase requirements appear in at least one plan?
 - **Task completeness** — does each task have files, action, verify, done?
-- **Context compliance** — do plans honor user decisions from CONTEXT.md?
+- **Context compliance** — do plans honor user decisions from CONTEXT.md? **Re-read CONTEXT.md to check** — don't recall from memory.
 - **Dependency logic** — are depends_on fields correct?
 - **Scope** — are plans appropriately sized?
+- **Verification specificity** — are verify steps actual commands, not vague descriptions?
+- **Source confidence** — are any plans built on UNVERIFIED technical claims?
 
 If issues found, revise the plans (up to 3 iterations). Report any changes made.
 
@@ -194,15 +236,19 @@ Update `.planning/STATE.md`:
 
 Phase [N]: [Name] — [P] plan(s)
 
-| Plan | Name | Tasks | Files |
-|------|------|-------|-------|
-| [N]-01 | [Name] | [count] | [count] |
-| [N]-02 | [Name] | [count] | [count] |
+| Plan | Name | Tasks | Files | Confidence |
+|------|------|-------|-------|------------|
+| [N]-01 | [Name] | [count] | [count] | HIGH/MED |
+| [N]-02 | [Name] | [count] | [count] | HIGH/MED |
 
 Research: [Completed | Skipped]
 Verification: [Passed | Skipped]
+Unverified claims: [count or "None"]
 
 ## ▶ Next Up
+
+Recommended: Start a NEW CONVERSATION for execution.
+This prevents research context from contaminating execution.
 
 /gsd-execute [N]    → Execute all plans
 ```

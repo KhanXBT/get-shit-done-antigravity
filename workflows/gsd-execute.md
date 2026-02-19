@@ -6,17 +6,35 @@ description: Execute all plans for a phase with atomic git commits
 
 Execute all plans in a phase. Each task gets its own atomic git commit. The orchestrator reads plans, executes tasks in order, commits each one, and creates a summary.
 
+> **🛡️ ANTI-HALLUCINATION PROTOCOL — ACTIVE IN THIS WORKFLOW**
+> This workflow executes code changes. Every step MUST be verified against real file contents and real command output. Do NOT assume, recall, or fabricate any results. READ files, RUN commands, CHECK outputs.
+
 ## Arguments
 
 The user should provide a phase number, e.g., `/gsd-execute 1`
 
 If no phase number provided, read STATE.md for the current phase.
 
+## Multi-Model Safeguard: Pre-Execution Context Load
+
+**MANDATORY before ANY execution begins — regardless of which AI model is running:**
+
+```
+CONTEXT FRESHNESS CHECK:
+1. view_file → .planning/STATE.md          (current position, decisions)
+2. view_file → .planning/ROADMAP.md        (phase goal, requirements)
+3. view_file → each PLAN.md for this phase (actual task instructions)
+
+⚠️ Do NOT rely on memory of these files from earlier in conversation.
+⚠️ Do NOT paraphrase plan contents — read the ACTUAL file each time.
+⚠️ If this is a new conversation, re-read ALL planning files from scratch.
+```
+
 ## Steps
 
 ### 1. Validate
 
-Read `.planning/ROADMAP.md` and `.planning/STATE.md`.
+**Actually read** (not recall) `.planning/ROADMAP.md` and `.planning/STATE.md`.
 
 **If no `.planning/` directory:** "No GSD project found. Run /gsd-new-project first."
 **If phase not found:** "Phase [N] not found."
@@ -32,7 +50,7 @@ Check for existing SUMMARY.md files (indicates previously completed plans) and s
 
 ### 2. Load Plans
 
-Read all PLAN.md files for this phase. Parse:
+**Read each PLAN.md file individually** — do NOT summarize from memory. Parse:
 - Plan number and name
 - Wave assignments (for ordering)
 - Dependencies between plans
@@ -62,23 +80,31 @@ For each plan in the wave, execute each task:
 
 **For each task:**
 
-1. **Read the task** — understand files, action, verify, done criteria
+1. **Re-read the task** — literally view the PLAN.md file again to get exact instructions. Do NOT work from memory.
 2. **Execute the action** — write code, create files, modify existing files as specified
 3. **Verify the task** — run the verify step (tests, checks, manual inspection)
-4. **Commit atomically:**
+4. **Read the verification output** — do NOT assume it passed. Read the actual terminal output or file contents.
+5. **Commit atomically:**
    ```bash
    git add [files]
    git commit -m "feat([NN]-[PP]): [task name]"
    ```
-5. **Report completion:**
+6. **Report completion:**
    ```
    ✓ Task [T]: [Task Name] — committed [hash]
    ```
 
+> **🛡️ HALLUCINATION GATE — After each task:**
+> - Did you actually RUN the verify command? (not just plan to)
+> - Did you READ the output? (not assume success)
+> - Does the output actually show success? (not just "no errors visible")
+> - If ANY doubt → re-run verification before proceeding
+> - NEVER say "tests pass" without actual test output proving it
+
 **If a task fails:**
-- Report the error clearly
+- Report the error clearly — include the ACTUAL error output
 - Ask the user: "Retry this task, skip it, or stop execution?"
-- If retry: attempt the task again
+- If retry: **re-read the PLAN.md** before attempting again
 - If skip: continue to next task, note the skip
 - If stop: create partial summary and exit
 
@@ -94,7 +120,7 @@ After all tasks in a plan complete, create `.planning/phases/[NN]-[slug]/[NN]-[P
 **Commits:** [count]
 
 ## What Was Built
-[Description of what was implemented]
+[Description of what was implemented — based on ACTUAL changes made, not plan intent]
 
 ## Files Created/Modified
 | File | Action | Description |
@@ -103,8 +129,8 @@ After all tasks in a plan complete, create `.planning/phases/[NN]-[slug]/[NN]-[P
 | [path] | Modified | [what changed] |
 
 ## Verification Results
-- [x] [Verification 1] — passed
-- [x] [Verification 2] — passed
+- [x] [Verification 1] — passed (actual output: [brief])
+- [x] [Verification 2] — passed (actual output: [brief])
 
 ## Notable Decisions
 [Any deviations from the plan or decisions made during execution]
@@ -129,9 +155,12 @@ After each wave:
 
 ### 6. Verify Phase Goal
 
+> **🛡️ CRITICAL — Do not hallucinate phase completion.**
+> Read the ACTUAL built files and test outputs. Compare against ROADMAP.md must-haves.
+
 After all waves complete, verify the phase achieved its goal:
 
-Read the phase goal from ROADMAP.md. Check the must-haves from each plan against what was actually built. Verify that requirement IDs assigned to this phase are addressed.
+**Re-read** the phase goal from ROADMAP.md (don't recall — read the file). Check the must-haves from each plan against what was actually built. Verify that requirement IDs assigned to this phase are addressed.
 
 Write `.planning/phases/[NN]-[slug]/[NN]-VERIFICATION.md`:
 
@@ -144,8 +173,8 @@ Write `.planning/phases/[NN]-[slug]/[NN]-VERIFICATION.md`:
 ## Must-Haves Check
 | Condition | Status | Evidence |
 |-----------|--------|----------|
-| [Must-have 1] | ✓ Met | [how verified] |
-| [Must-have 2] | ✓ Met | [how verified] |
+| [Must-have 1] | ✓ Met | [how verified — cite actual file/output] |
+| [Must-have 2] | ✓ Met | [how verified — cite actual file/output] |
 
 ## Requirements Coverage
 | Req ID | Requirement | Addressed By | Status |
@@ -190,6 +219,9 @@ Plans: [M] executed | Commits: [K] total
 Verification: Passed
 
 ## ▶ Next Up
+
+Recommended: Start a NEW CONVERSATION for the next workflow step.
+This prevents context contamination from this execution session.
 
 /gsd-verify [N]      → Manual acceptance testing
 /gsd-discuss [N+1]   → Start next phase

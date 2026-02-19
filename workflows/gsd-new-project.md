@@ -6,6 +6,24 @@ description: Initialize a new GSD project with questions, research, requirements
 
 Initialize a new project through a structured flow: questioning → research → requirements → roadmap. This is the most leveraged moment — deep questioning here means better plans, better execution, better outcomes.
 
+> **🛡️ ANTI-HALLUCINATION PROTOCOL — ACTIVE IN THIS WORKFLOW**
+> Project initialization defines EVERYTHING downstream. Record the user's ACTUAL vision — do NOT subtly reshape it. Research using real sources — do NOT fabricate ecosystem knowledge. When unsure about a technology claim, verify it or say "I'm not certain."
+
+## Multi-Model Safeguard: Initialization Integrity
+
+**MANDATORY — regardless of which AI model is running:**
+
+```
+INITIALIZATION RULES:
+1. Write down what the USER says — do NOT "improve" their vision
+2. Research claims before recording — verify libraries exist, APIs work
+3. Present options neutrally — do NOT favor your training data's preferences
+4. Record decisions with attribution — USER chose X vs AI suggested Y
+5. Mark research confidence levels — HIGH (verified), MEDIUM (searched), LOW (from memory)
+
+⚠️ This is the FOUNDATION. Hallucinations here compound into every phase.
+```
+
 ## Steps
 
 ### 1. Check for Existing Project
@@ -50,6 +68,12 @@ Wait for their response, then follow up with intelligent questions that dig into
 - Find edges — "What happens when there are zero items?"
 - Reveal motivation — "What problem sparked this idea?"
 
+> **🛡️ QUESTIONING INTEGRITY:**
+> - Do NOT lead the user toward your preferred architecture
+> - Do NOT assume technical requirements the user hasn't mentioned
+> - If the user says something technically questionable, ASK — don't silently correct
+> - Record their EXACT responses, not your interpreted version
+
 **Topics to cover through natural conversation (don't use as a checklist):**
 - Core value proposition — the ONE thing that must work
 - Target users — who is this for?
@@ -70,16 +94,17 @@ Create `.planning/PROJECT.md` synthesizing everything gathered:
 # [Project Name]
 
 ## Vision
-[One paragraph: what this is and why it matters]
+[One paragraph: what this is and why it matters — use USER'S framing]
 
 ## Core Value
-[The ONE thing that must work for this to succeed]
+[The ONE thing that must work for this to succeed — from USER's words]
 
 ## Target Users
-[Who this is for, what they need]
+[Who this is for, what they need — as USER described]
 
 ## Technical Context
 [Stack decisions, platform, constraints]
+[Note: USER-chosen vs AI-suggested items]
 
 ## Requirements
 
@@ -98,9 +123,10 @@ Create `.planning/PROJECT.md` synthesizing everything gathered:
 
 ## Key Decisions
 
-| Decision | Rationale | Outcome |
-|----------|-----------|---------|
-| [Choice] | [Why]     | Pending |
+| Decision | Source | Rationale | Outcome |
+|----------|--------|-----------|---------|
+| [Choice] | User | [Why]     | Decided |
+| [Choice] | AI-suggested | [Why] | Agreed |
 
 ---
 *Last updated: [date] after initialization*
@@ -152,12 +178,18 @@ Ask the user: "Want me to research the domain ecosystem before defining requirem
 
 **If yes, research these 4 dimensions:**
 
+> **🛡️ RESEARCH VERIFICATION — For each claim in research:**
+> - Use `search_web` to verify current ecosystem state
+> - Use `read_url_content` on official docs when referencing specific tools
+> - Mark confidence level: HIGH (verified) / MEDIUM (searched) / LOW (from memory)
+> - Flag anything marked LOW — user should validate these claims
+
 1. **Stack Research** — What's the standard 2025 stack for this domain? Write to `.planning/research/STACK.md`
 2. **Features Research** — What features do products in this domain have? What's table stakes vs differentiating? Write to `.planning/research/FEATURES.md`
 3. **Architecture Research** — How are these systems typically structured? Write to `.planning/research/ARCHITECTURE.md`
 4. **Pitfalls Research** — What do projects in this domain commonly get wrong? Write to `.planning/research/PITFALLS.md`
 
-After researching all 4, create `.planning/research/SUMMARY.md` with key findings.
+After researching all 4, create `.planning/research/SUMMARY.md` with key findings and confidence levels.
 
 ```bash
 mkdir -p .planning/research
@@ -206,6 +238,8 @@ Differentiators and improvements for after v1 is stable.
 
 Present requirements to user for approval before continuing.
 
+**WAIT for explicit user approval. Do NOT proceed without it.**
+
 Commit:
 ```bash
 git add .planning/REQUIREMENTS.md
@@ -251,6 +285,8 @@ Create `.planning/ROADMAP.md` based on requirements:
 
 Present roadmap to user for approval.
 
+**WAIT for explicit user approval. Do NOT proceed without it.**
+
 Commit:
 ```bash
 git add .planning/ROADMAP.md
@@ -271,9 +307,10 @@ Create `.planning/STATE.md` to track current position:
 
 ## Key Decisions
 
-| Decision | Phase | Rationale |
-|----------|-------|-----------|
-| [From questioning] | Init | [Why] |
+| Decision | Phase | Source | Rationale |
+|----------|-------|--------|-----------|
+| [From questioning] | Init | User | [Why] |
+| [From questioning] | Init | AI-suggested | [Why] |
 
 ### Blockers/Concerns
 None
@@ -301,6 +338,9 @@ Phases: [N] phases planned
 Requirements: [M] v1 requirements
 
 ## ▶ Next Up
+
+Recommended: Start a NEW CONVERSATION for each phase workflow.
+This prevents initialization context from contaminating planning.
 
 /gsd-discuss 1    → Capture preferences for Phase 1
 /gsd-plan 1       → Skip to planning Phase 1

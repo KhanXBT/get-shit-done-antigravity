@@ -6,15 +6,35 @@ description: Verify built features through user acceptance testing
 
 Validate built features through conversational testing. Show expected behavior, ask if reality matches. One test at a time, plain text responses.
 
+> **🛡️ ANTI-HALLUCINATION PROTOCOL — ACTIVE IN THIS WORKFLOW**
+> Verification is the last line of defense. NEVER mark a test as "passed" without the user confirming it. NEVER infer test results — only the user or actual command output determines pass/fail.
+
 ## Arguments
 
 The user should provide a phase number, e.g., `/gsd-verify 1`
+
+## Multi-Model Safeguard: Verification Integrity
+
+**MANDATORY — regardless of which AI model is running:**
+
+```
+VERIFICATION RULES:
+1. NEVER auto-pass a test — WAIT for user's explicit response
+2. NEVER assume command output — actually RUN commands and READ output
+3. NEVER fabricate test results — if you can't verify, say so
+4. Present ACTUAL behavior observed, not expected behavior as fact
+5. If a user reports an issue, do NOT argue — record it exactly
+
+⚠️ The most dangerous hallucination is "verification passed" when it didn't.
+⚠️ Different models have different tendencies to agree with users or
+   fabricate positive results. This protocol prevents ALL such tendencies.
+```
 
 ## Steps
 
 ### 1. Validate
 
-Read `.planning/ROADMAP.md` and check phase exists.
+**Actually read** (not recall) `.planning/ROADMAP.md` and check phase exists.
 
 **If no `.planning/`:** "No GSD project found. Run /gsd-new-project first."
 **If phase not found:** "Phase [N] not found."
@@ -25,13 +45,16 @@ Check for SUMMARY.md files in the phase directory — these contain what was bui
 
 ### 2. Extract Testable Deliverables
 
-Read all SUMMARY.md files for this phase. For each accomplishment:
+**Read** (not recall) all SUMMARY.md files for this phase. For each accomplishment:
 
 - Focus on **user-observable outcomes**, not implementation details
 - Skip internal refactors, type changes, etc.
 - Create a test for each deliverable with:
   - **name:** Brief test name
   - **expected:** What the user should see/experience (specific, observable)
+
+> **🛡️ Extract tests from ACTUAL SUMMARY.md content — do NOT invent tests
+> for features that weren't in the summary.**
 
 Example:
 - Accomplishment: "Added comment threading with infinite nesting"
@@ -55,7 +78,8 @@ Expected behavior:
 ──────────────────────────────────────────────────────────────
 ```
 
-Wait for user response.
+**WAIT for user response. Do NOT proceed to next test without explicit user input.**
+**Do NOT auto-fill or suggest answers.**
 
 ### 4. Process Response
 
@@ -67,6 +91,7 @@ Wait for user response.
 
 **If anything else:**
 - Treat as issue description
+- Record the user's EXACT words (do not paraphrase or sanitize)
 - Infer severity from language:
   | User says | Severity |
   |-----------|----------|
@@ -95,8 +120,8 @@ Create/update `.planning/phases/[NN]-[slug]/[NN]-UAT.md`:
 
 | # | Test | Result | Details |
 |---|------|--------|---------|
-| 1 | [Name] | ✓ Pass | — |
-| 2 | [Name] | ✗ Issue | [user's description] |
+| 1 | [Name] | ✓ Pass | User confirmed |
+| 2 | [Name] | ✗ Issue | [user's EXACT words] |
 | 3 | [Name] | ○ Skip | [reason] |
 
 ## Summary
@@ -112,7 +137,7 @@ Create/update `.planning/phases/[NN]-[slug]/[NN]-UAT.md`:
 
 - **Test [N]: [Name]**
   - Expected: [what should happen]
-  - Reported: [user's exact words]
+  - Reported: [user's exact words — NOT paraphrased]
   - Severity: [inferred]
 
 ---
@@ -137,6 +162,8 @@ git commit -m "test([NN]): UAT complete — [passed] passed, [issues] issues"
 All [N] tests passed!
 
 ## ▶ Next Up
+
+Recommended: Start a NEW CONVERSATION for the next phase.
 
 /gsd-discuss [N+1]   → Start next phase
 /gsd-plan [N+1]      → Plan next phase

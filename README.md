@@ -292,6 +292,42 @@ GSD-Antigravity/
 
 ---
 
+## 🛡️ Anti-Hallucination Engine
+
+**The #1 reason AI coding assistants fail is hallucination** — fabricated APIs, assumed test results, invented library syntax. GSD for Antigravity has structural anti-hallucination safeguards baked into every workflow:
+
+| Protection                    | What it prevents                                       |
+|-------------------------------|--------------------------------------------------------|
+| **File-First Context**        | Always re-reads files — never relies on memory of them |
+| **Source Verification**       | Technical claims verified via docs before use in plans |
+| **Confidence Levels**         | Research tagged HIGH/MEDIUM/LOW by verification source |
+| **Verification Gates**       | Every task verified — output read, not assumed         |
+| **No Auto-Pass**             | Tests never marked passed without user confirmation    |
+| **Decision Attribution**     | Tracks USER-decided vs AI-suggested decisions          |
+| **Context Freshness**        | New conversation recommended between workflow steps    |
+| **Checkpoint Integrity**     | WAIT for user — never hallucinate completion           |
+
+These aren't suggestions — they're **embedded instructions** inside every workflow file that the AI must follow.
+
+---
+
+## 🤖 Multi-Model Compatible
+
+Unlike the original GSD (Claude-only), GSD for Antigravity works across **all AI models** because Antigravity rotates between them:
+
+| Model | Common Hallucination Pattern | GSD Protection |
+|-------|-----|------|
+| **Claude** (Anthropic) | Polite hallucination — agrees with wrong assumptions | Decision capture integrity, no-lead questioning |
+| **Gemini** (Google DeepMind) | Plausible synthesis — mixes real and fabricated info | Source verification hierarchy, confidence tagging |
+| **GPT** (OpenAI) | Confident fabrication — invents APIs that don't exist | Library verification gates, URL checking |
+| **Open-source** | Higher baseline hallucination rate | Structural guardrails, mandatory file re-reads |
+
+**Model-agnostic by design**: uses structural safeguards (file reads, command verification, user gates) instead of relying on model-specific behavior.
+
+> See [`references/anti-hallucination.md`](references/anti-hallucination.md) for the comprehensive guide.
+
+---
+
 ## Adaptations from Original GSD
 
 | Feature | Original (Claude Code) | Antigravity Port |
