@@ -2,6 +2,16 @@
 
 All notable changes to GSD for Antigravity.
 
+## [1.0.5] - 2025-02-19
+### Added
+- **🛡️ Anti-Hallucination Q&A Showcase** — Dedicated sections and highlighting for verified research mode in all documentation.
+- **Documentation Overhaul** — Prominent `/gsd-no-halluc` and `/gsd-super` features in README and User Guide.
+
+## [1.0.4] - 2025-02-19
+### Changed
+- **Style Alignment** — Precision CLI tagline alignment with official repository description.
+- **Premium Branding** — Standardized 5-color "Antigravity" color theme and author credits across all entry points.
+
 ## [1.0.0] - 2025-02-19
 
 ### Added

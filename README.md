@@ -103,6 +103,22 @@ Give it a prompt or PRD, answer a few questions, and go grab a coffee. `/gsd-sup
 
 ---
 
+## 🛡️ Anti-Hallucination Q&A — Verified Research
+
+**The end of "plausible fabrication" in AI coding.**
+
+When you aren't building a feature but need a verified technical answer, use `/gsd-no-halluc [question]` or `/no-halluc [question]`. This mode bypasses the standard workflow and activates our dedicated verification engine.
+
+### How it works:
+*   **Mandatory Research Loop**: The AI is forbidden from answering until it has verified the claim via `search_web`, `read_url_content`, or codebase exploration.
+*   **Confidence Scoring**: Every answer is tagged with a confidence level (**HIGH**, **MEDIUM**, or **LOW**) based on the source's authority.
+*   **Exact Citations**: Every claim includes a direct link to documentation or a specific file/line in your project.
+*   **Truth-First Protocol**: If a claim cannot be verified, the model is instructed to say "I don't know" or "I couldn't verify this item" instead of guessing.
+
+> **Tip**: Use this for architectural decisions, looking up library syntax, or auditing your own codebase for security pitfalls.
+
+---
+
 ## Getting Started
 
 ### Installation
