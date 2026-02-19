@@ -5,14 +5,16 @@ All notable changes to GSD for Antigravity.
 ## [1.0.0] - 2025-02-19
 
 ### Added
-- Initial release — ported GSD v1.20.4 methodology to Antigravity
-- 8 workflow files: new-project, discuss, plan, execute, verify, quick, progress, help
-- 11 agent prompts from original GSD (planner, executor, verifier, debugger, researchers, etc.)
-- 22 file templates for planning documents
-- 13 reference docs for patterns and conventions
-- Installation script (`scripts/install.sh`) with global and local modes
-- User guide (`docs/USER-GUIDE.md`)
-- MIT License
+- **⚡ Super Mode (`/gsd-super`)** — Fully autonomous execution mode from prompt to production with zero human input (1,300+ line workflow).
+- **🛡️ Anti-Hallucination Engine** — Structural safeguards embedded in all workflows to prevent context rot and model errors.
+- **🔄 Model Resilience Protocol** — Specialized patterns to maintain quality when switching models mid-project (Claude ↔ Gemini ↔ GPT).
+- **Loop Detection Algorithm** — Detects and breaks out of circular fix patterns and hallucination loops.
+- **5-Tier Verification Suite** — syntax, types, lint, tests, and build checks after every task.
+- **Visual Browser Testing** — Autonomous UI verification using screenshots and responsive design checks.
+- 8 core workflow files: new-project, discuss, plan, execute, verify, quick, progress, help.
+- 11 agent prompts and 22 file templates for planning.
+- Installation script (`scripts/install.sh`) and PowerShell installer.
+- Comprehensive documentation and reference guides.
 
 ### Adapted from Original GSD
 - Replaced Claude Code subagent spawning with Antigravity sequential task execution
