@@ -2,13 +2,13 @@
 
 # GSD for Antigravity 🚀
 
-**A spec-driven development workflow system for [Antigravity](https://deepmind.google/) — featuring a fully autonomous ⚡ [Super Mode](#-super-mode--full-autonomy), multi-model anti-hallucination, and model resilience protocols.**
+**A spec-driven development workflow system for [Antigravity](https://deepmind.google/) — featuring a fully autonomous ⚡ [Super Mode](#-super-mode--full-autonomy), 🛡️ [Anti-Hallucination Q&A](#-anti-hallucination-qa--verified-research), and model resilience protocols.**
 
 **Built on [Get Shit Done](https://github.com/gsd-build/get-shit-done), solving context rot, hallucination, and quality drops across models.**
 
 [![GitHub stars](https://img.shields.io/github/stars/KhanXBT/get-shit-done-antigravity?style=for-the-badge&logo=github&color=181717)](https://github.com/KhanXBT/get-shit-done-antigravity)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.5-green?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.0.6-green?style=for-the-badge)](CHANGELOG.md)
 [![Original GSD](https://img.shields.io/badge/based_on-GSD_v1.20.4-CB3837?style=for-the-badge)](https://github.com/gsd-build/get-shit-done)
 
 <br>

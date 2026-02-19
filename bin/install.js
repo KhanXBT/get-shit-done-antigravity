@@ -36,7 +36,7 @@ function showBanner() {
     console.log('');
     console.log('    ' + bold('GSD for Antigravity') + ' ' + dim('v' + getVersion()));
     console.log('    ' + green('A spec-driven development workflow system for Antigravity — featuring a fully'));
-    console.log('    ' + green('autonomous ⚡ Super Mode, anti-hallucination, and model resilience protocols.'));
+    console.log('    ' + green('autonomous ⚡ Super Mode, 🛡️ Anti-Hallucination Q&A, and model resilience protocols.'));
     console.log('    ' + dim('Built by Arshad Khan'));
     console.log('');
 }
