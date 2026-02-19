@@ -315,6 +315,7 @@ function showHeader(title) {
     console.log(colors.cyan('    ██║   ██║╚════██║██║  ██║'));
     console.log(colors.cyan('    ╚██████╔╝███████║██████╔╝'));
     console.log(colors.cyan('     ╚═════╝ ╚══════╝╚═════╝ '));
+    console.log(colors.dim('    Built by Arshad Khan'));
     console.log('');
     const line = '━'.repeat(53);
     console.log(` ${line}`);

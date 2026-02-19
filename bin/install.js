@@ -34,6 +34,7 @@ function showBanner() {
     console.log('');
     console.log('    ' + bold('GSD for Antigravity') + ' ' + dim('v' + getVersion()));
     console.log('    ' + cyan('Full Autonomous Execution Mode Enabled'));
+    console.log('    ' + dim('Built by Arshad Khan'));
     console.log('');
 }
 
