@@ -88,7 +88,7 @@ This isn't just a port. **~40% is adapted from the original GSD, ~60% is our own
 
 **The first "walk away" build engine for AI coding agents.** 
 
-Give it a prompt or PRD, answer a few questions, and go grab a coffee. `/gsd-super` runs the entire lifecycle (v1.0.0 is a **1,314-line spec**) autonomously.
+Give it a prompt or PRD, answer a few questions, and go grab a coffee. `/gsd-super` runs the entire lifecycle (v1.0.0 is a **production-ready engine**) autonomously.
 
 ### Core Capabilities:
 *   **PRD Intelligence**: Auto-expands one-liners into technical specs or parses 10-page PRDs into phased roadmaps.
