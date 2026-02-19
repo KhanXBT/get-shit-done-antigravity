@@ -23,7 +23,8 @@ echo -e "    ${BLUE}╚██████╔╝${CYAN}███████║${
 echo -e "    ${CYAN} ╚═════╝ ${CYAN}╚══════╝${CYAN}╚═════╝ ${NC}"
 echo ""
 echo -e "    ${BOLD}GSD for Antigravity${NC}"
-echo -e "    ${GREEN}The first autonomous, multi-model development engine.${NC}"
+echo -e "    ${GREEN}A spec-driven development workflow system for Antigravity — featuring a fully${NC}"
+echo -e "    ${GREEN}autonomous ⚡ Super Mode, anti-hallucination, and model resilience protocols.${NC}"
 echo -e "    ${DIM}Built by Arshad Khan${NC}"
 echo ""
 
