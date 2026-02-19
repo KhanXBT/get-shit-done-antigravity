@@ -2,9 +2,9 @@
 
 # GSD for Antigravity 🚀
 
-**A spec-driven development workflow system for [Antigravity](https://deepmind.google/) — ported from [Get Shit Done](https://github.com/gsd-build/get-shit-done).**
+**A spec-driven development workflow system for [Antigravity](https://deepmind.google/) — built on [Get Shit Done](https://github.com/gsd-build/get-shit-done), with original multi-model anti-hallucination and model resilience features not found in the original.**
 
-**Solves context rot — the quality degradation that happens as AI fills its context window.**
+**Solves context rot, hallucination, and code quality drops during model switches.**
 
 [![GitHub stars](https://img.shields.io/github/stars/KhanXBT/get-shit-done-antigravity?style=for-the-badge&logo=github&color=181717)](https://github.com/KhanXBT/get-shit-done-antigravity)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
@@ -29,7 +29,7 @@ npx get-shit-done-antigravity
 
 <br>
 
-[How It Works](#how-it-works) · [Commands](#commands) · [Why It Works](#why-it-works) · [User Guide](docs/USER-GUIDE.md)
+[How It Works](#how-it-works) · [Commands](#commands) · [Why It Works](#why-it-works) · [What's New](#-whats-new--ported-vs-invented) · [User Guide](docs/USER-GUIDE.md)
 
 </div>
 
@@ -39,7 +39,34 @@ npx get-shit-done-antigravity
 
 [GSD](https://github.com/gsd-build/get-shit-done) by TÂCHES is the best spec-driven development system for AI coding — but it only runs on Claude Code, OpenCode, and Gemini CLI.
 
-**GSD for Antigravity** ports the entire methodology to work natively inside [Antigravity](https://deepmind.google/) (Google DeepMind's AI coding assistant). Same structured approach. Same file organization. Same atomic commits. No extra tools required.
+**GSD for Antigravity** takes the methodology and makes it better. Same structured approach. Same atomic commits. **Plus original features the original GSD doesn't have** — because Antigravity's multi-model architecture creates problems that single-model tools never face.
+
+---
+
+## 🆕 What's New — Ported vs Invented
+
+This isn't just a port. **~40% is adapted from the original GSD, ~60% is our own innovation** built for Antigravity's multi-model reality:
+
+| Feature | Origin | Details |
+|---------|--------|---------|
+| Spec-driven workflow (plan → execute → verify) | ✅ Ported from GSD | Adapted for Antigravity's tool system |
+| Atomic git commits per task | ✅ Ported from GSD | Same approach |
+| XML task plans with verify/done criteria | ✅ Ported from GSD | Same structure |
+| Context freshness (`/clear` → new conversation) | ⚡ Adapted from GSD | Original uses `/clear`, we recommend new conversations |
+| Source verification hierarchy | ⚡ Adapted from GSD | Original uses Context7 MCP, we use `read_url_content` + `search_web` |
+| Checkpoints (wait for user) | ⚡ Adapted from GSD | Original uses `AskUserQuestion`, we use `notify_user` |
+| **🛡️ Anti-Hallucination Engine** | **🆕 Our Invention** | Structural safeguards in EVERY workflow file, not just agent prompts |
+| **🤖 Multi-Model Compatibility** | **🆕 Our Invention** | Per-model hallucination pattern guards (Claude, Gemini, GPT, OSS) |
+| **🔄 Model Resilience** | **🆕 Our Invention** | Code quality stays consistent when Claude quota → Gemini switch |
+| **📋 Code Patterns in Plans** | **🆕 Our Invention** | Plans reference existing files as style templates for any model |
+| **🎯 Style Anchoring Protocol** | **🆕 Our Invention** | Read existing code before writing — match patterns exactly |
+| **✅ Full Verification Suite** | **🆕 Our Invention** | Lint + types + tests + build after EVERY task, not just plan verify |
+| **📝 Decision Attribution** | **🆕 Our Invention** | Tracks USER-decided vs AI-suggested decisions |
+| **🏷️ Confidence Levels** | **🆕 Our Invention** | Research tagged HIGH/MED/LOW by verification source |
+
+> **The original GSD doesn't need these features** because it only runs on Claude.
+> Antigravity rotates between models — creating problems that single-model tools never face.
+> **We solve them.**
 
 ---
 
